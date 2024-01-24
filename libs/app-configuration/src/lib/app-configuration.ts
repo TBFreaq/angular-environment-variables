@@ -1,3 +1,5 @@
+import { InjectionToken } from '@angular/core';
+
 export interface AppConfiguration {
   apiUrl: string | null;
   backgroundColor: string | null;
