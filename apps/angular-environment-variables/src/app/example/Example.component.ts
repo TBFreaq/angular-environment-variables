@@ -1,9 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
   APP_CONFIGURATION_TOKEN,
   AppConfiguration,
 } from '@angular-environment-variables/app-configuration';
+import { CommonModule } from '@angular/common';
+import { Component, Signal, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { APIService } from '../api.service';
+import { RandomDogApiResponse } from '../random-dog.model';
 
 @Component({
   selector: 'angular-environment-variables-example',
@@ -14,4 +17,8 @@ import {
 })
 export class ExampleComponent {
   public readonly appConfig: AppConfiguration = inject(APP_CONFIGURATION_TOKEN);
+  public readonly randomDog: Signal<RandomDogApiResponse | undefined> =
+    toSignal(this.apiService.getRandomDog());
+
+  constructor(private readonly apiService: APIService) {}
 }

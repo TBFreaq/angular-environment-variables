@@ -1,3 +1,5 @@
 <div
-  style="height: 100%; width: 100%"
-  [ngStyle]="{ 'background-color': appConfig.backgroundColor }"></div>
+  style="height: 100%; width: 100%; display: flex"
+  [ngStyle]="{ 'background-color': appConfig.backgroundColor }">
+  <img *ngIf="randomDog() as dog" style="height: 75%; width: 75%; object-fit: contain; margin: auto" [src]="dog.url" />
+</div>
