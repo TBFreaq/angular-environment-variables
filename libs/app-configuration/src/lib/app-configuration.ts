@@ -3,3 +3,5 @@ export interface AppConfiguration {
   backgroundColor: string | null;
   angularEnvironment: 'development' | 'production';
 }
+
+export const APP_CONFIGURATION_TOKEN = new InjectionToken<AppConfiguration>('AppConfiguration');
