@@ -1,0 +1,67 @@
+{
+  "name": "runtime-host",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/runtime-host/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/runtime-host",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/runtime-host/src/main.ts",
+        "tsConfig": "apps/runtime-host/tsconfig.app.json",
+        "assets": ["apps/runtime-host/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "runtime-host:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "runtime-host:build:development"
+        },
+        "production": {
+          "buildTarget": "runtime-host:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/runtime-host/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
