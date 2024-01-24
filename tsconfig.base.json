@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@angular-environment-variables/app-configuration": [
+        "libs/app-configuration/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
