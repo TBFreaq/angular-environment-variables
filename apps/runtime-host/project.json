@@ -12,12 +12,14 @@
         "platform": "node",
         "outputPath": "dist/apps/runtime-host",
         "format": ["cjs"],
-        "bundle": false,
         "main": "apps/runtime-host/src/main.ts",
         "tsConfig": "apps/runtime-host/tsconfig.app.json",
         "assets": ["apps/runtime-host/src/assets"],
-        "generatePackageJson": true,
+        "bundle": true,
+        "thirdParty": true,
+        "generatePackageJson": false,
         "esbuildOptions": {
+          "minify": true,
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
