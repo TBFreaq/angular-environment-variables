@@ -6,7 +6,7 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3333;
 const app = express();
 
 const config: AppConfiguration = {
-  angularEnvironment: process.env['ANGULAR_ENVIRONMENT'] === 'development' ? 'development' : 'production',
+  angularEnvironment: process.env['ANGULAR_ENVIRONMENT'] === 'DEVELOPMENT' ? 'development' : 'production',
   apiUrl: process.env['API_URL'] ?? null,
   backgroundColor: process.env['BACKGROUND_COLOR'] ?? null
 }
